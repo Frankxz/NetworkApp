@@ -11,16 +11,15 @@ import UIKit
 
 class MainCollectionViewController: UICollectionViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var itemsPerRow: CGFloat = 2
+    
     var sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-
+    var itemsPerRow: CGFloat = 2
     var characters: [BBCharacter] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
         fetchBBCharacters()
-        print("fetched")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,6 +52,8 @@ class MainCollectionViewController: UICollectionViewController {
     
 
 }
+
+// MARK: - Network
 extension MainCollectionViewController {
     func fetchBBCharacters() {
         guard let url = URL(string: "https://www.breakingbadapi.com/api/characters") else {return}
@@ -72,10 +73,10 @@ extension MainCollectionViewController {
                 print(error.localizedDescription)
             }
         }.resume()
-        collectionView.reloadData()
         }
 }
 
+// MARK: - CollectionView layout
 extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
