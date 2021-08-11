@@ -15,18 +15,20 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
     
-    var image: UIImage!
-    var birthdate: String!
-    var status: String!
-    var nickname: String!
+    var img: UIImage!
+    
+    var character: BBCharacter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = image
-        birthDateLabel.text = "Birth date: \(birthdate ?? "Unknown")"
-        statusLabel.text = "Status: \(status ?? "Unknown")"
-        nicknameLabel.text = "Nickname: \(nickname ?? "Unknown")"
+        imageView.image = img
+        birthDateLabel.text = "Birth date: \(character.birthday ?? "Unknown")"
+        statusLabel.text = "Status: \(character.status ?? "Unknown")"
+        nicknameLabel.text = "Nickname: \(character.nickname ?? "Unknown")"
     }
-
+    func fetchImage() {
+        guard let imageData = NetworkManager.shared.fetchImage(with: character.img) else {return}
+        img = UIImage(data: imageData)
+    }
 }

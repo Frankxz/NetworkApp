@@ -25,16 +25,10 @@ class MainCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let infoVC = segue.destination as? InfoViewController else { return }
         let cell = sender as! CharacterCell
-    
-        infoVC.navigationItem.title = cell.character.name
-        infoVC.image = cell.characterImage.image
-        infoVC.birthdate = cell.character.birthday
-        infoVC.status = cell.character.status
-        infoVC.nickname = cell.character.nickname
-    }
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-       1
+        
+        infoVC.character = cell.character
+        infoVC.fetchImage()
+
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -56,23 +50,11 @@ class MainCollectionViewController: UICollectionViewController {
 // MARK: - Network
 extension MainCollectionViewController {
     func fetchBBCharacters() {
-        guard let url = URL(string: "https://www.breakingbadapi.com/api/characters") else {return}
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "Unknown error description")
-                return
+      let url =  "https://www.breakingbadapi.com/api/characters"
+        NetworkManager.shared.fetchCharacters(with: url) { characters in
+            self.characters = characters
+            self.collectionView.reloadData()
             }
-            
-            do {
-                self.characters = try
-                    JSONDecoder().decode([BBCharacter].self, from: data)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            } catch let error{
-                print(error.localizedDescription)
-            }
-        }.resume()
         }
 }
 
@@ -87,15 +69,15 @@ extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInserts
+        sectionInserts
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInserts.left
+         sectionInserts.left
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInserts.left
+         sectionInserts.left
     }
 }
 
