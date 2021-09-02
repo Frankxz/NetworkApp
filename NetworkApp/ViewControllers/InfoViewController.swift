@@ -9,7 +9,7 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: CharacterImageView!
   
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -28,7 +28,9 @@ class InfoViewController: UIViewController {
         nicknameLabel.text = "Nickname: \(character.nickname ?? "Unknown")"
     }
     func fetchImage() {
-        guard let imageData = NetworkManager.shared.fetchImage(with: character.img) else {return}
-        img = UIImage(data: imageData)
+        guard let imageURL = URL(string: character.img ?? "") else { return }
+         let data = try? Data(contentsOf: imageURL)
+        img = UIImage(data: data!)
     }
 }
+

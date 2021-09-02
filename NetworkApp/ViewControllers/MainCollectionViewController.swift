@@ -23,11 +23,13 @@ class MainCollectionViewController: UICollectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        activityIndicator.startAnimating()
         guard let infoVC = segue.destination as? InfoViewController else { return }
         let cell = sender as! CharacterCell
         
         infoVC.character = cell.character
         infoVC.fetchImage()
+        activityIndicator.stopAnimating()
 
     }
 

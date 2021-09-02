@@ -16,6 +16,7 @@
 		C60A6DC626BFF73C00D6741F /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A6DC526BFF73C00D6741F /* MainCollectionViewController.swift */; };
 		C60A6DC826BFF77600D6741F /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A6DC726BFF77600D6741F /* CharacterCell.swift */; };
 		C60A6DCA26C007BD00D6741F /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A6DC926C007BD00D6741F /* Character.swift */; };
+		C63DF72726E1334400E01163 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF72626E1334400E01163 /* CharacterImageView.swift */; };
 		C642764C26C03ADF00860611 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C642764B26C03ADF00860611 /* HomeViewController.swift */; };
 		C694845C26C02E4E00BFE508 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694845B26C02E4E00BFE508 /* InfoViewController.swift */; };
 		C6DE3E3726C3C447004D5949 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE3E3626C3C447004D5949 /* NetworkManager.swift */; };
@@ -34,6 +35,7 @@
 		C60A6DC726BFF77600D6741F /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		C60A6DC926C007BD00D6741F /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		C60E99B172131FBD76D7B3A8 /* Pods_NetworkApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C63DF72626E1334400E01163 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		C642764B26C03ADF00860611 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = NetworkApp/ViewControllers/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		C688B99879817CDC6137D005 /* Pods-NetworkApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkApp.debug.xcconfig"; path = "Target Support Files/Pods-NetworkApp/Pods-NetworkApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C694845B26C02E4E00BFE508 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				C642764B26C03ADF00860611 /* HomeViewController.swift */,
 				C694845B26C02E4E00BFE508 /* InfoViewController.swift */,
 				C60A6DC526BFF73C00D6741F /* MainCollectionViewController.swift */,
+				C63DF72626E1334400E01163 /* CharacterImageView.swift */,
 				C60A6DC726BFF77600D6741F /* CharacterCell.swift */,
 			);
 			path = ViewControllers;
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C63DF72726E1334400E01163 /* CharacterImageView.swift in Sources */,
 				C60A6DB226BFF69900D6741F /* AppDelegate.swift in Sources */,
 				C60A6DC626BFF73C00D6741F /* MainCollectionViewController.swift in Sources */,
 				C60A6DCA26C007BD00D6741F /* Character.swift in Sources */,

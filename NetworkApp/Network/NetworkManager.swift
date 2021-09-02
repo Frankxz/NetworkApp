@@ -29,8 +29,19 @@ class NetworkManager {
                 }
             }
     }
-    func fetchImage (with url: String?) -> Data? {
-        guard let imageURL = URL(string: url ?? "") else { return nil}
-        return try? Data(contentsOf: imageURL)
+//    func fetchImage (with url: String?) -> Data? {
+//        guard let imageURL = URL(string: url ?? "") else { return nil}
+//        return try? Data(contentsOf: imageURL)
+//    }
+    
+    func fetchImage(url: URL, complition: @escaping (Data,URLResponse) ->()){
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, let response = response else {
+                print(error?.localizedDescription ?? "Unknown error")
+                return
+            }
+            guard url == response.url else {return}
+            complition(data,response)
+        }.resume()
     }
 }
