@@ -16,19 +16,6 @@ class CharacterCell: UICollectionViewCell {
     func configure(with character: BBCharacter)  {
         self.character = character
         nameLabel.text = character.name
-        
-//        guard let url = URL(string: character.img ?? "") else { return }
-//        URLSession.shared.dataTask(with: url) { data, _, error in
-//            guard let data = data else {
-//                print(error?.localizedDescription ?? "Can not fetch image")
-//                return
-//            }
-//
-//            guard let image = UIImage(data: data) else { return }
-//            DispatchQueue.main.async {
-//                self.characterImage.image = image
-//            }
-//        }.resume()
         characterImage.fetchImage(from: character.img ?? "")
     }
 }

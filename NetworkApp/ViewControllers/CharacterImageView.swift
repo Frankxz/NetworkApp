@@ -37,7 +37,6 @@ class CharacterImageView: UIImageView {
     private func getCachedImage(from url: URL) -> UIImage? {
         let request = URLRequest(url: url)
         if let cachedResponse = URLCache.shared.cachedResponse(for: request) {
-            print("Catched")
             return UIImage(data: cachedResponse.data)
         }
         print("No catched")
@@ -47,8 +46,9 @@ class CharacterImageView: UIImageView {
     
     private func saveDataToCache(with data: Data, and response: URLResponse) {
         guard let urlResponse = response.url else { return }
-        let request = URLRequest(url: urlResponse)
         let cachedResponse = CachedURLResponse(response: response, data: data)
+        
+        let request = URLRequest(url: urlResponse)
         URLCache.shared.storeCachedResponse(cachedResponse, for: request)
     }
     
