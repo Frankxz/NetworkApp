@@ -52,5 +52,5 @@ class CharacterImageView: UIImageView {
         URLCache.shared.storeCachedResponse(cachedResponse, for: request)
     }
     
-  
+    
 }

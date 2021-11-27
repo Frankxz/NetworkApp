@@ -8,9 +8,9 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: CharacterImageView!
-  
+    
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
@@ -22,6 +22,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = character.name
         imageView.image = img
         birthDateLabel.text = "Birth date: \(character.birthday ?? "Unknown")"
         statusLabel.text = "Status: \(character.status ?? "Unknown")"
@@ -29,7 +30,7 @@ class InfoViewController: UIViewController {
     }
     func fetchImage() {
         guard let imageURL = URL(string: character.img ?? "") else { return }
-         let data = try? Data(contentsOf: imageURL)
+        let data = try? Data(contentsOf: imageURL)
         img = UIImage(data: data!)
     }
 }
